@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+
+{% block title %}Panel de Usuario - TasaFácil{% endblock %}
+
+{% block content %}
+<div class="d-flex justify-content-between align-items-center mb-6">
+    <div>
+        <h2 class="fw-bold"><i class="bi bi-speedometer2 me-2 text-neon-cyan"></i>Panel de Usuario</h2>
+        <p class="text-muted small mb-0">Bienvenido de vuelta, <strong>{{ user.email }}</strong></p>
+    </div>
+    <span class="badge bg-light text-dark px-3 py-2">Usuario activo</span>
+</div>
+
+<div class="row g-4 mb-6">
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="dashboard-card fade-in-up" style="animation-delay: 0.1s;">
+            <div class="dashboard-icon">
+                <i class="bi bi-cash-stack"></i>
+            </div>
+            <h5>Mis Presupuestos</h5>
+            <p>Crea y gestiona presupuestos de venta con tasas actualizadas.</p>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="dashboard-card fade-in-up" style="animation-delay: 0.2s;">
+            <div class="dashboard-icon">
+                <i class="bi bi-box"></i>
+            </div>
+            <h5>Mis Productos</h5>
+            <p>Administra tu catálogo de productos con costos en dólares.</p>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="dashboard-card fade-in-up" style="animation-delay: 0.3s;">
+            <div class="dashboard-icon">
+                <i class="bi bi-person-workspace"></i>
+            </div>
+            <h5>Perfil de Negocio</h5>
+            <p>Configura tu información comercial y datos fiscales.</p>
+        </div>
+    </div>
+    <div class="col-12 col-sm-6 col-lg-3">
+        <div class="dashboard-card fade-in-up" style="animation-delay: 0.4s;">
+            <div class="dashboard-icon">
+                <i class="bi bi-graph-up"></i>
+            </div>
+            <h5>Tasas del Día</h5>
+            <p>Consulta las tasas de cambio de BCV, Euro y Binance.</p>
+        </div>
+    </div>
+</div>
+
+<div class="card-tasafacil fade-in-up" style="animation-delay: 0.5s;">
+    <div class="card-body p-4">
+        <h4 class="card-title fw-bold mb-4">¿Qué deseas hacer hoy?</h4>
+        <div class="action-grid">
+            <a href="#" class="btn-action" aria-label="Crear presupuesto">
+                <i class="bi bi-plus-circle"></i>
+                Nuevo Presupuesto
+            </a>
+            <a href="#" class="btn-action" aria-label="Agregar producto">
+                <i class="bi bi-box-plus"></i>
+                Agregar Producto
+            </a>
+            <a href="#" class="btn-action" aria-label="Editar perfil">
+                <i class="bi bi-pencil-square"></i>
+                Editar Perfil
+            </a>
+        </div>
+    </div>
+</div>
+{% endblock %}

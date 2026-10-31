@@ -1,0 +1,51 @@
+{% extends 'base.html' %}
+
+{% block title %}Crear Cuenta - TasaFácil{% endblock %}
+
+{% block content %}
+<div class="d-flex align-items-center justify-content-center min-vh-100 py-4">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-5 col-xl-4">
+        <div class="form-card fade-in-up">
+            <div class="card-body">
+                <div class="text-center mb-6">
+                    <div class="bg-glass rounded-full p-3 mx-auto mb-4 text-neon-emerald" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                        <i class="bi bi-person-plus fs-3"></i>
+                    </div>
+                    <h2 class="fw-bold mb-2">Crear Cuenta</h2>
+                    <p class="text-muted small">Únete a TasaFácil y comienza a gestionar tus finanzas</p>
+                </div>
+
+                <form method="post" novalidate>
+                    {% csrf_token %}
+                    <div class="mb-4">
+                        <label for="id_username" class="form-label"><i class="bi bi-person-fill text-neon-cyan me-2"></i>Nombre de Usuario</label>
+                        {{ form.username }}
+                    </div>
+                    <div class="mb-4">
+                        <label for="id_email" class="form-label"><i class="bi bi-envelope-fill text-neon-cyan me-2"></i>Correo Electrónico</label>
+                        {{ form.email }}
+                    </div>
+                    <div class="mb-4">
+                        <label for="id_password1" class="form-label"><i class="bi bi-lock-fill text-neon-cyan me-2"></i>Contraseña</label>
+                        {{ form.password1 }}
+                    </div>
+                    <div class="mb-6">
+                        <label for="id_password2" class="form-label"><i class="bi bi-lock-fill text-neon-cyan me-2"></i>Confirmar Contraseña</label>
+                        {{ form.password2 }}
+                    </div>
+                    <button type="submit" class="btn btn-tasafacil-submit w-100" aria-label="Registrarse">
+                        <i class="bi bi-person-plus me-2"></i>Crear Cuenta
+                    </button>
+                </form>
+
+                <div class="card-footer text-center py-5 border-0 bg-transparent mt-4">
+                    <p class="mb-0 text-muted small">¿Ya tienes cuenta?</p>
+                    <a href="{% url 'login' %}" class="btn-tasafacil-secondary" aria-label="Iniciar sesión">
+                        Inicia sesión <i class="bi bi-arrow-right me-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

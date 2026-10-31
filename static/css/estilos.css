@@ -1,0 +1,988 @@
+/* ========================================
+   TasaFácil – Fintech Premium Redesign
+   ======================================== */
+
+/* Tipografía premium */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap');
+
+/* ===== Variables – Modo Claro Premium ===== */
+:root {
+  /* Colores primarios fintech */
+  --color-primary: #0f172a;
+  --color-primary-dark: #020617;
+  --color-primary-glow: rgba(15, 23, 42, 0.2);
+
+  /* Acentos neón (ajustados para modo claro - más saturados) */
+  --color-neon-emerald: #059669;
+  --color-neon-cyan: #0891b2;
+  --color-neon-cyan-glow: rgba(8, 145, 178, 0.25);
+  --color-neon-violet: #7c3aed;
+  --color-neon-violet-glow: rgba(124, 58, 237, 0.2);
+
+  /* Gradientes principales */
+  --gradient-primary: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  --gradient-neon: linear-gradient(135deg, #0891b2 0%, #059669 50%, #7c3aed 100%);
+  --gradient-card: linear-gradient(145deg, #ffffff 0%, #f8fafc 100%);
+  --gradient-button: linear-gradient(135deg, #0891b2 0%, #059669 100%);
+  --gradient-button-hover: linear-gradient(135deg, #075985 0%, #047857 100%);
+
+  /* Superficies glassmorphism (más opacas para modo claro) */
+  --color-bg: #f1f5f9;
+  --color-bg-card: #ffffff;
+  --color-bg-elevated: #f8fafc;
+  --color-bg-input: #ffffff;
+  --color-text: #0f172a;
+  --color-text-secondary: #475569;
+  --color-text-muted: #64748b;
+  --color-border: #e2e8f0;
+  --color-border-hover: #0891b2;
+
+  /* Sombras (más sutiles en modo claro) */
+  --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+  --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+  --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1);
+  --shadow-neon-cyan: 0 0 15px rgba(8, 145, 178, 0.3);
+  --shadow-neon-emerald: 0 0 15px rgba(5, 150, 105, 0.3);
+
+  /* Bordes y radio */
+  --radius-sm: 12px;
+  --radius-md: 16px;
+  --radius-lg: 24px;
+  --radius-xl: 32px;
+  --radius-full: 9999px;
+
+  /* Transiciones fluidas */
+  --transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  --transition-fast: all 0.2s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+/* ===== Variables – Modo Oscuro Profundo ===== */
+[data-theme="dark"] {
+  --color-primary: #f8fafc;
+  --color-primary-dark: #e2e8f0;
+  --color-primary-glow: rgba(248, 250, 252, 0.2);
+
+  --color-neon-emerald: #34d399;
+  --color-neon-cyan: #22d3ee;
+  --color-neon-cyan-glow: rgba(34, 211, 238, 0.5);
+  --color-neon-violet: #a78bfa;
+  --color-neon-violet-glow: rgba(167, 139, 250, 0.3);
+
+  --gradient-primary: linear-gradient(135deg, #020617 0%, #0f172a 100%);
+  --gradient-neon: linear-gradient(135deg, #22d3ee 0%, #34d399 50%, #a78bfa 100%);
+  --gradient-card: linear-gradient(145deg, rgba(30, 41, 59, 0.7) 0%, rgba(15, 23, 42, 0.6) 100%);
+  --gradient-button: linear-gradient(135deg, #22d3ee 0%, #10b981 100%);
+  --gradient-button-hover: linear-gradient(135deg, #67e8f9 0%, #34d399 100%);
+
+  --color-bg: #020617;
+  --color-bg-card: rgba(30, 41, 59, 0.6);
+  --color-bg-elevated: rgba(51, 65, 85, 0.4);
+  --color-bg-input: rgba(51, 65, 85, 0.6);
+  --color-text: #f8fafc;
+  --color-text-secondary: #cbd5e1;
+  --color-text-muted: #94a3b8;
+  --color-border: rgba(255, 255, 255, 0.1);
+  --color-border-hover: rgba(34, 211, 238, 0.4);
+
+  --shadow-neon-cyan: 0 0 30px rgba(34, 211, 238, 0.4);
+  --shadow-neon-emerald: 0 0 30px rgba(52, 211, 153, 0.4);
+}
+
+/* ===== Base ===== */
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--color-text);
+  background-color: var(--color-bg);
+  line-height: 1.6;
+  margin: 0;
+  min-height: 100vh;
+  transition: background-color 0.5s ease, color 0.5s ease;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 800;
+  color: var(--color-text);
+  letter-spacing: -0.03em;
+  line-height: 1.1;
+}
+
+h1 { font-size: clamp(2.5rem, 5vw, 4rem); }
+h2 { font-size: clamp(2rem, 4vw, 3rem); }
+h3 { font-size: clamp(1.5rem, 3vw, 2rem); }
+h4 { font-size: clamp(1.25rem, 2.5vw, 1.5rem); }
+
+p {
+  color: var(--color-text-secondary);
+  font-size: 1rem;
+}
+
+a {
+  color: var(--color-neon-cyan);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+a:hover {
+  color: var(--color-neon-emerald);
+}
+
+/* Focus visible */
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 2px solid var(--color-neon-cyan);
+  outline-offset: 3px;
+  border-radius: var(--radius-sm);
+}
+
+/* Utilidades */
+.text-gradient {
+  background: var(--gradient-neon);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-neon-cyan { color: var(--color-neon-cyan); }
+.text-neon-emerald { color: var(--color-neon-emerald); }
+
+.bg-glass {
+  background: var(--color-bg-card);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-lg);
+}
+
+.glass-elevated {
+  background: var(--color-bg-elevated);
+  backdrop-filter: blur(24px) saturate(200%);
+  border: 1px solid var(--color-border);
+  box-shadow: var(--shadow-xl);
+}
+
+/* ===== Animaciones ===== */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInDown {
+  from { opacity: 0; transform: translateY(-30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  0%, 100% { box-shadow: var(--shadow-neon-cyan); }
+  50% { box-shadow: 0 0 40px rgba(6, 182, 212, 0.6); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes shimmer {
+  0% { background-position: -200% 0; }
+  100% { background-position: 200% 0; }
+}
+
+.fade-in-up {
+  animation: fadeInUp 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.fade-in-down {
+  animation: fadeInDown 0.7s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+.float-animation {
+  animation: float 6s ease-in-out infinite;
+}
+
+.shimmer-bg {
+  background: linear-gradient(90deg, #1e293b 25%, #334155 50%, #1e293b 75%);
+  background-size: 200% 100%;
+  animation: shimmer 2s infinite;
+}
+
+/* ===== Navbar Premium ===== */
+.navbar {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(24px);
+  border-bottom: 1px solid var(--color-border);
+  padding: 1.25rem 0;
+  transition: var(--transition);
+}
+
+[data-theme="dark"] .navbar {
+  background: rgba(2, 6, 23, 0.8) !important;
+}
+
+.navbar-brand {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-weight: 900;
+  font-size: 1.75rem;
+  color: var(--color-text) !important;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  transition: var(--transition);
+}
+
+.navbar-brand:hover {
+  transform: scale(1.05);
+}
+
+.navbar-brand i {
+  font-size: 2rem;
+  background: var(--gradient-neon);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  filter: drop-shadow(0 0 8px rgba(6, 182, 212, 0.5));
+}
+
+.nav-link {
+  font-weight: 600;
+  color: var(--color-text-secondary) !important;
+  font-size: 0.95rem;
+  transition: var(--transition-fast);
+  position: relative;
+}
+
+.nav-link:hover {
+  color: var(--color-neon-cyan) !important;
+}
+
+.btn-tasafacil-primary {
+  background: var(--gradient-button);
+  border: none;
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  padding: 0.875rem 1.75rem;
+  transition: var(--transition);
+  box-shadow: var(--shadow-neon-cyan);
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-tasafacil-primary::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+  transition: 0.5s;
+}
+
+.btn-tasafacil-primary:hover::before {
+  left: 100%;
+}
+
+.btn-tasafacil-primary:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(6, 182, 212, 0.6);
+  filter: brightness(1.1);
+}
+
+.btn-tasafacil-outline {
+  background: transparent;
+  border: 2px solid var(--color-border);
+  color: var(--color-text);
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  padding: 0.875rem 1.5rem;
+  width: 100%;
+  font-size: 1rem;
+  line-height: 1.4;
+  transition: var(--transition);
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn-tasafacil-outline:hover {
+  background-color: var(--color-neon-cyan);
+  border-color: var(--color-neon-cyan);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-neon-cyan);
+}
+
+.btn-tasafacil-submit,
+.btn-tasafacil-secondary,
+.btn-tasafacil-outline,
+.btn-tasafacil-light {
+  /* Reset de Bootstrap para control total de dimensiones */
+  --bs-btn-padding-y: 0;
+  --bs-btn-padding-x: 0;
+  --bs-btn-font-size: inherit;
+  --bs-btn-border-width: 0;
+  --bs-btn-line-height: inherit;
+  --bs-btn-font-family: inherit;
+  --bs-btn-color: inherit;
+  --bs-btn-bg: transparent;
+  --bs-btn-border-color: transparent;
+  --bs-btn-hover-border-color: transparent;
+  --bs-btn-active-color: inherit;
+  --bs-btn-active-bg: transparent;
+  --bs-btn-disabled-color: inherit;
+  --bs-btn-disabled-bg: transparent;
+  --bs-btn-focus-box-shadow: none;
+}
+
+.btn-tasafacil-submit {
+  background: var(--gradient-button);
+  border: none;
+  color: #ffffff;
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  padding: 0.875rem 1.5rem;
+  width: 100%;
+  font-size: 1rem;
+  line-height: 1.4;
+  transition: var(--transition);
+  box-shadow: var(--shadow-neon-emerald);
+  position: relative;
+  overflow: hidden;
+  min-height: 52px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  text-align: center;
+}
+
+.btn-tasafacil-submit:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 40px rgba(16, 185, 129, 0.6);
+  filter: brightness(1.1);
+}
+
+.btn-tasafacil-secondary {
+  background: transparent;
+  border: 2px solid var(--color-border);
+  color: var(--color-primary);
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  padding: 0.875rem 1.5rem;
+  width: 100%;
+  font-size: 1rem;
+  line-height: 1.4;
+  transition: var(--transition);
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn-tasafacil-secondary:hover {
+  background-color: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #ffffff;
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Toggle de tema */
+.theme-toggle {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  padding: 0.875rem;
+  border-radius: var(--radius-full);
+  transition: var(--transition);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-md);
+}
+
+.theme-toggle:hover {
+  background-color: var(--color-neon-cyan);
+  color: #ffffff;
+  border-color: var(--color-neon-cyan);
+  transform: rotate(15deg) scale(1.1);
+  box-shadow: var(--shadow-neon-cyan);
+}
+
+.theme-toggle i {
+  font-size: 1.25rem;
+}
+
+/* ===== Messages ===== */
+.messages-container {
+  position: fixed;
+  top: 90px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9999;
+  width: 92%;
+  max-width: 600px;
+  pointer-events: none;
+}
+
+.alert {
+  pointer-events: auto;
+  border: none;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-xl);
+  padding: 1.25rem 1.5rem;
+  font-weight: 600;
+  font-size: 0.95rem;
+  margin-bottom: 0.75rem;
+  background: var(--color-bg-card);
+  color: var(--color-text);
+  border: 1px solid var(--color-border);
+  animation: fadeInDown 0.4s ease;
+}
+
+.alert-success {
+  background: rgba(16, 185, 129, 0.1);
+  color: var(--color-neon-emerald);
+  border-color: rgba(16, 185, 129, 0.3);
+}
+
+.alert-error, .alert-danger {
+  background: rgba(239, 68, 68, 0.1);
+  color: #ef4444;
+  border-color: rgba(239, 68, 68, 0.3);
+}
+
+.alert-warning {
+  background: rgba(245, 158, 11, 0.1);
+  color: #f59e0b;
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+.alert-info {
+  background: rgba(6, 182, 212, 0.1);
+  color: var(--color-neon-cyan);
+  border-color: rgba(6, 182, 212, 0.3);
+}
+
+/* ===== Cards Premium ===== */
+.card-tasafacil {
+  border: none;
+  border-radius: var(--radius-xl);
+  background: var(--color-bg-card);
+  box-shadow: var(--shadow-xl);
+  transition: var(--transition);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  position: relative;
+}
+
+.card-tasafacil::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, transparent 0%, rgba(255,255,255,0.03) 50%, transparent 100%);
+  opacity: 0;
+  transition: var(--transition);
+}
+
+.card-tasafacil:hover::before {
+  opacity: 1;
+}
+
+.card-tasafacil:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-neon-cyan);
+  border-color: var(--color-border-hover);
+}
+
+.card-tasafacil .card-body {
+  padding: 2.5rem;
+}
+
+.card-tasafacil .card-header {
+  border: none;
+  padding: 2rem 2.5rem;
+  background: transparent;
+  font-weight: 800;
+}
+
+/* ===== Hero Section Premium ===== */
+.hero-tasafacil {
+  background: var(--gradient-card);
+  border-radius: var(--radius-xl);
+  padding: 5rem 3rem;
+  color: var(--color-text);
+  text-align: center;
+  margin-bottom: 4rem;
+  box-shadow: var(--shadow-xl);
+  position: relative;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+}
+
+.hero-tasafacil::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle at center, rgba(8, 145, 178, 0.1) 0%, transparent 50%);
+  animation: pulseGlow 8s ease-in-out infinite;
+  pointer-events: none;
+  z-index: 0;
+}
+
+[data-theme="dark"] .hero-tasafacil::before {
+  background: radial-gradient(circle at center, rgba(6, 182, 212, 0.15) 0%, transparent 50%);
+}
+
+[data-theme="dark"] .hero-tasafacil {
+  background: var(--gradient-primary);
+  color: #ffffff;
+  border-color: rgba(255,255,255,0.1);
+}
+
+[data-theme="dark"] .hero-tasafacil h1 {
+  color: #ffffff;
+}
+
+[data-theme="dark"] .hero-tasafacil p {
+  color: #e2e8f0;
+}
+
+.hero-tasafacil > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-tasafacil h1 {
+  font-size: clamp(3rem, 6vw, 4.5rem);
+  font-weight: 900;
+  color: var(--color-primary);
+  margin-bottom: 1.5rem;
+  letter-spacing: -0.05em;
+}
+
+.hero-tasafacil p {
+  font-size: clamp(1.1rem, 2vw, 1.4rem);
+  margin-bottom: 3rem;
+  color: var(--color-text-secondary);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.hero-tasafacil .btn-group {
+  display: flex;
+  gap: 1rem;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.hero-tasafacil .btn {
+  padding: 1rem 2rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: var(--radius-full);
+  transition: var(--transition);
+}
+
+.btn-tasafacil-light {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  color: var(--color-text-secondary);
+  font-weight: 700;
+  border-radius: var(--radius-md);
+  padding: 0.875rem 1.5rem;
+  width: 100%;
+  font-size: 1rem;
+  line-height: 1.4;
+  transition: var(--transition);
+  text-align: center;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn-tasafacil-light:hover {
+  background-color: var(--color-bg-elevated);
+  border-color: var(--color-neon-cyan);
+  color: var(--color-neon-cyan);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-neon-cyan);
+}
+
+/* ===== Rate Cards Premium ===== */
+.rate-card {
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-card);
+  padding: 2.5rem 2rem;
+  text-align: center;
+  transition: var(--transition);
+  position: relative;
+  overflow: hidden;
+}
+
+.rate-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 6px;
+  background: var(--gradient-neon);
+  border-radius: var(--radius-lg) var(--radius-lg) 0 0;
+  transform: scaleX(0);
+  transition: var(--transition);
+  transform-origin: left;
+}
+
+.rate-card:hover::before {
+  transform: scaleX(1);
+}
+
+.rate-card:hover {
+  border-color: var(--color-neon-cyan);
+  box-shadow: var(--shadow-neon-cyan);
+  transform: translateY(-6px);
+}
+
+.rate-label {
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--color-text-muted);
+  margin-bottom: 1.5rem;
+}
+
+.rate-value {
+  font-size: 3rem;
+  font-weight: 900;
+  color: var(--color-text);
+  margin-bottom: 0.75rem;
+  font-variant-numeric: tabular-nums;
+}
+
+.rate-change {
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.5rem 1rem;
+  border-radius: var(--radius-full);
+  display: inline-block;
+  margin-top: 1rem;
+}
+
+.rate-change.positive {
+  background: rgba(16, 185, 129, 0.15);
+  color: var(--color-neon-emerald);
+  box-shadow: var(--shadow-neon-emerald);
+}
+
+.rate-change.negative {
+  background: rgba(239, 68, 68, 0.15);
+  color: #ef4444;
+  box-shadow: 0 0 15px rgba(239, 68, 68, 0.3);
+}
+
+/* ===== Formularios Premium ===== */
+.form-card {
+  border: none;
+  border-radius: var(--radius-xl);
+  background: var(--color-bg-card);
+  box-shadow: var(--shadow-xl);
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+}
+
+.form-card .card-body {
+  padding: 3.5rem 2.5rem;
+}
+
+.form-label {
+  font-weight: 600;
+  color: var(--color-text-secondary);
+  font-size: 0.875rem;
+  margin-bottom: 0.5rem;
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.form-control {
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-md);
+  padding: 1.125rem 1.25rem;
+  font-size: 1rem;
+  font-family: 'Inter', sans-serif;
+  transition: var(--transition-fast);
+  background-color: var(--color-bg-input);
+  color: var(--color-text);
+}
+
+.form-control:focus {
+  border-color: var(--color-neon-cyan);
+  box-shadow: 0 0 0 4px rgba(6, 182, 212, 0.1);
+  outline: none;
+  background-color: var(--color-bg-input);
+}
+
+[data-theme="dark"] .form-control {
+  background-color: var(--color-bg-input);
+  color: var(--color-text);
+}
+
+.form-control::placeholder {
+  color: var(--color-text-muted);
+}
+
+/* ===== Panel Dashboard Premium ===== */
+.dashboard-card {
+  border: none;
+  border-radius: var(--radius-lg);
+  background: var(--color-bg-card);
+  padding: 2rem;
+  text-align: center;
+  box-shadow: var(--shadow-lg);
+  transition: var(--transition);
+  border: 1px solid var(--color-border);
+  position: relative;
+  overflow: hidden;
+}
+
+.dashboard-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-neon);
+  transform: scaleX(0);
+  transition: var(--transition);
+}
+
+.dashboard-card:hover::before {
+  transform: scaleX(1);
+}
+
+.dashboard-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-neon-cyan);
+  border-color: var(--color-border-hover);
+}
+
+.dashboard-icon {
+  font-size: 2.75rem;
+  color: var(--color-neon-cyan);
+  margin-bottom: 1.5rem;
+  display: inline-block;
+  filter: drop-shadow(0 0 10px rgba(6, 182, 212, 0.3));
+}
+
+.dashboard-card h5 {
+  font-size: 1.25rem;
+  margin-bottom: 0.75rem;
+  color: var(--color-text);
+}
+
+.dashboard-card p {
+  font-size: 0.95rem;
+  color: var(--color-text-muted);
+  margin-bottom: 0;
+}
+
+/* ===== Action Grid Premium ===== */
+.action-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+}
+
+.btn-action {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  padding: 2rem 1.5rem;
+  background: var(--color-bg-card);
+  border: 2px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  color: var(--color-text);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: var(--transition);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-action::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(6, 182, 212, 0.1), transparent);
+  transition: 0.5s;
+}
+
+.btn-action:hover::before {
+  left: 100%;
+}
+
+.btn-action:hover {
+  border-color: var(--color-neon-cyan);
+  background-color: var(--color-bg-elevated);
+  transform: translateY(-5px);
+  color: var(--color-neon-cyan);
+  box-shadow: var(--shadow-neon-cyan);
+}
+
+.btn-action i {
+  font-size: 1.75rem;
+  color: var(--color-neon-violet);
+  filter: drop-shadow(0 0 8px rgba(139, 92, 246, 0.3));
+}
+
+/* ===== Footer Premium ===== */
+footer {
+  border-top: 1px solid var(--color-border);
+  margin-top: 5rem;
+  padding: 4rem 0 3rem;
+  text-align: center;
+  color: var(--color-text-muted);
+  font-size: 0.875rem;
+  background: var(--color-bg-card);
+}
+
+footer a {
+  color: var(--color-neon-cyan);
+  font-weight: 600;
+}
+
+footer a:hover {
+  color: var(--color-neon-emerald);
+}
+
+/* ===== Loader sutil ===== */
+.loading-overlay {
+  position: fixed;
+  inset: 0;
+  background: var(--color-bg);
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: opacity 0.4s ease;
+}
+
+.loading-spinner {
+  width: 3rem;
+  height: 3rem;
+  border: 3px solid var(--color-border);
+  border-top-color: var(--color-neon-cyan);
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 576px) {
+  .hero-tasafacil {
+    padding: 3rem 1.5rem;
+    margin-bottom: 3rem;
+  }
+
+  .hero-tasafacil h1 {
+    font-size: 2.25rem;
+  }
+
+  .hero-tasafacil p {
+    font-size: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .hero-tasafacil .btn-group {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hero-tasafacil .btn {
+    width: 100%;
+  }
+
+  .rate-card {
+    padding: 2rem 1.5rem;
+  }
+
+  .rate-value {
+    font-size: 2.25rem;
+  }
+
+  .form-card .card-body {
+    padding: 2.5rem 1.5rem;
+  }
+
+  .dashboard-card {
+    margin-bottom: 1rem;
+  }
+
+  .messages-container {
+    top: 80px;
+    width: 94%;
+    font-size: 0.875rem;
+  }
+
+  .navbar-brand {
+    font-size: 1.4rem;
+  }
+
+  .navbar-brand i {
+    font-size: 1.75rem;
+  }
+
+  .action-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 992px) {
+  .hero-tasafacil {
+    padding: 3.5rem 2rem;
+  }
+
+  .messages-container {
+    top: 90px;
+  }
+}
+
+@media (max-width: 768px) {
+  .navbar .d-flex.gap-2 {
+    flex-direction: column;
+    gap: 1rem;
+    width: 100%;
+    margin-top: 1rem;
+  }
+
+  .navbar .d-flex.gap-2 > * {
+    width: 100%;
+    justify-content: center;
+  }
+}

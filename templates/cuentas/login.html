@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Iniciar Sesión - TasaFácil{% endblock %}
+
+{% block content %}
+<div class="d-flex align-items-center justify-content-center min-vh-100 py-4">
+    <div class="col-12 col-sm-10 col-md-8 col-lg-5 col-xl-4">
+        <div class="form-card fade-in-up">
+            <div class="card-body">
+                <div class="text-center mb-6">
+                    <div class="bg-glass rounded-full p-3 mx-auto mb-4 text-neon-cyan" style="width: 80px; height: 80px; display: flex; align-items: center; justify-content: center;">
+                        <i class="bi bi-box-arrow-in-right fs-3"></i>
+                    </div>
+                    <h2 class="fw-bold mb-2">Iniciar Sesión</h2>
+                    <p class="text-muted small">Accede a tu cuenta de TasaFácil</p>
+                </div>
+
+                <form method="post" novalidate>
+                    {% csrf_token %}
+                    <div class="mb-4">
+                        <label for="id_username" class="form-label"><i class="bi bi-person-fill text-neon-cyan me-2"></i>Usuario</label>
+                        {{ form.username }}
+                    </div>
+                    <div class="mb-6">
+                        <label for="id_password" class="form-label"><i class="bi bi-lock-fill text-neon-cyan me-2"></i>Contraseña</label>
+                        {{ form.password }}
+                    </div>
+                    <button type="submit" class="btn btn-tasafacil-submit w-100" aria-label="Iniciar sesión">
+                        <i class="bi bi-box-arrow-right me-2"></i>Entrar
+                    </button>
+                </form>
+
+                <div class="card-footer text-center py-5 border-0 bg-transparent mt-4">
+                    <p class="mb-0 text-muted small">¿No tienes cuenta?</p>
+                    <a href="{% url 'registro' %}" class="btn-tasafacil-secondary" aria-label="Registrarse">
+                        Regístrate aquí <i class="bi bi-arrow-right me-1"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
