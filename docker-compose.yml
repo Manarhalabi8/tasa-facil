@@ -1,0 +1,43 @@
+version: '3.8'
+
+services:
+  db:
+    image: postgres:15-alpine
+    container_name: tasa_facil_db
+    environment:
+      POSTGRES_DB: tasafacil
+      POSTGRES_USER: tasafacil_user
+      POSTGRES_PASSWORD: tasafacil_password
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5432:5432"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U tasafacil_user -d tasafacil"]
+      interval: 5s
+      timeout: 5s
+      retries: 5
+
+  web:
+    build: .
+    container_name: tasa_facil_web
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+    environment:
+      - DJANGO_SETTINGS_MODULE=config.settings
+      - POSTGRES_DB=tasafacil
+      - POSTGRES_USER=tasafacil_user
+      - POSTGRES_PASSWORD=tasafacil_password
+      - DB_HOST=db
+      - DB_PORT=5432
+    stdin_open: true
+    tty: true
+
+volumes:
+  postgres_data:
