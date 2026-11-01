@@ -146,3 +146,18 @@ ganancia_usd_binance= ganancia_bs / tasa_binance
 A partir de este punto inicia la construcción del código siguiendo la fase
 ascendente de verificación (pruebas unitarias por módulo, pruebas de integración
 de cálculo de presupuestos, y pruebas de aceptación con usuarios reales).
+
+# Levantar todo
+docker compose up --build
+
+# Realizar migraciones
+docker compose exec web python manage.py migrate 
+
+# Crear superusuario
+docker compose exec web python manage.py createsuperuser 
+
+# Acceder a la app
+# http://localhost:8000
+
+# Detener
+docker compose down
